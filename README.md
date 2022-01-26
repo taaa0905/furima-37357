@@ -73,7 +73,6 @@
 | tel_number          | integer    | null: false                    |
 | user                | references | null: false, foreign_key: true |
 | purchase            | references | null: false, foreign_key: true |
-|
 
 ### Association
 
