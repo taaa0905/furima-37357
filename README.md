@@ -33,11 +33,15 @@
 | packaging_day_id    | integer    | null: false                    |
 | price               | integer    | null: false                    |
 | user                | references | null: false, foreign_key: true |
+| purchase            | references | null: false, foreign_key: true |
+| address             | references | null: false, foreign_key: true |
+
 
 ### Association
 
 - belongs_to :user
 - has_one    :purchase
+- belongs_to :address
 - has_many   :comments
 
 ## purchase テーブル
@@ -62,19 +66,20 @@
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
 | post_code           | integer    | null: false                    |
-| prefecture          | string     | null: false                    |
+| prefecture_id       | integer    | null: false                    |
 | city                | string     | null: false                    |
 | block               | string     | null: false                    |
 | building            | string     | null: true                     |
 | tel_number          | integer    | null: false                    |
-| item                | references | null: false, foreign_key: true |
+| user                | references | null: false, foreign_key: true |
 | purchase            | references | null: false, foreign_key: true |
+|
 
 ### Association
 
 - belongs_to :user
-- belongs_to :item
-- belongs_to :purchase
+- has_many :purchases
+- has_many :items
 
 ## comments テーブル
 
