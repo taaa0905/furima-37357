@@ -4,11 +4,11 @@
 
 | Column             | Type   | Options                   | 
 | ------------------ | ------ | ------------------------- |
-| user_name          | string | null: false
-| nickname           | string | null: false
+| user_name          | string | null: false               |
+| furigana           | string | null: false               |
+| nickname           | string | null: false               |
 | email              | string | null: false, unique: true |
 | encrypted_password | string | null: false               |
-| furigana           | string | null: false               |
 | dob                | string | null: false               |
 
 ### Association
@@ -24,13 +24,13 @@
 | explanation         | text       | null: false                    |
 | category            | string     | null: false                    |
 | condition           | string     | null: false                    |
-| shipping charges    | string     | null: false                    |
+| shipping_charge     | string     | null: false                    |
 | item_area           | string     | null: false                    |
-| days                | string     | null: false                    |
+| packaging_day       | string     | null: false                    |
 | price               | string     | null: false                    |
-| commission          | string     | null: false                    |
-| margin              | string     | null: false                    |
-| user                | string     | null: false, foreign_key: true |
+| commission          | string     | null: true                     |
+| margin              | string     | null: true                     |
+| user                | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -40,8 +40,8 @@
 ## comments テーブル
 
 | Column    | Type       | Options                        |
-| ----------| -----------| ------------------------------ |
-| content   | text       | null: false, foreign_key: true |
+| --------- | ---------- | ------------------------------ |
+| content   | text       | null: false                    |
 | item      | references | null: false, foreign_key: true |
 | user      | references | null: false, foreign_key: true |
 
