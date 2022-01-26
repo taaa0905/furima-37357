@@ -17,7 +17,6 @@
 
 - has_many :items
 - has_many :purchases
-- has_many :address
 - has_many :comments
 
 ## items テーブル
@@ -33,9 +32,6 @@
 | packaging_day_id    | integer    | null: false                    |
 | price               | integer    | null: false                    |
 | user                | references | null: false, foreign_key: true |
-| purchase            | references | null: false, foreign_key: true |
-| address             | references | null: false, foreign_key: true |
-
 
 ### Association
 
@@ -44,41 +40,35 @@
 - belongs_to :address
 - has_many   :comments
 
-## purchase テーブル
+## purchases テーブル
 
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
-| card_number         | integer    | null: false                    |
-| expiry              | date       | null: false                    |
-| security_code       | integer    | null: false                    |
 | user                | references | null: false, foreign_key: true |
 | item                | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- has_one    :item
-- belongs_to :address
+- belongs_to :item
+- has_one    :address
 
 
 ## address テーブル
 
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
-| post_code           | integer    | null: false                    |
+| post_code           | string     | null: false                    |
 | prefecture_id       | integer    | null: false                    |
 | city                | string     | null: false                    |
 | block               | string     | null: false                    |
-| building            | string     | null: true                     |
-| tel_number          | integer    | null: false                    |
-| user                | references | null: false, foreign_key: true |
+| building            | string     |                                |
+| tel_number          | string     | null: false                    |
 | purchase            | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :user
 - has_many :purchases
-- has_many :items
 
 ## comments テーブル
 
