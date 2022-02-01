@@ -1,7 +1,9 @@
 .error-alert {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   margin-bottom: 5vh;
+  padding: 0px 200px;
 }
 
 .error-message {
@@ -9,3 +11,4 @@
   list-style: circle;
   color: rgb(182, 48, 0);
 }
+
