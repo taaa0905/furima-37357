@@ -8,6 +8,6 @@ FactoryBot.define do
     email                       {"aaaaaa@a.com"}
     password                    {"a1a1a1"}
     password_confirmation       {"a1a1a1"}
-    dob                         {2022/1/1}
+    dob                         {"2021-1-1"}
   end
 end
