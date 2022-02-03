@@ -3,6 +3,7 @@ class Item < ApplicationRecord
   has_one    :purchase
   has_many   :comments
   has_one_attached :image
+  belongs_to :category
 
   validates :product_name, presence: true
   validates :explanation, presence: true
@@ -14,4 +15,6 @@ class Item < ApplicationRecord
   validates :price, presence: true
   validates :user, presence: true
   validates :image, presence: true
+  validates :category_id, numericality: { other_than: 1 , message: "can't be blank"}
+  validates :condition_id, numericality: { other_than: 1 , message: "can't be blank"}
 end
