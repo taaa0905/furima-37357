@@ -68,6 +68,11 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include ("Price must be less than or equal to 9999999")
       end
+      it 'priceに小数点を入力した場合出品できない' do
+        @item.price = 500.00
+        @item.valid?
+        expect(@item.errors.full_messages).to include ("Price must be an integer")
+      end
       it 'imageが選択されていない場合出品できない' do
         @item.image = nil
         @item.valid?
