@@ -28,6 +28,11 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include('Post code is invalid. Include hyphen(-)')
       end
+      it 'post_codeにハイフンが入力されていないと購入できない' do
+        @purchase_address.post_code = '1234567'
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include('Post code is invalid. Include hyphen(-)')
+      end
       it 'prefecture_idに1が選択されている場合購入できない' do
         @purchase_address.prefecture_id = 1
         @purchase_address.valid?
@@ -47,6 +52,21 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.tel_number = ''
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Tel number can't be blank")
+      end
+      it 'tel_numberは9桁以下を入力しても購入できない' do
+        @purchase_address.tel_number = 123456789
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("Tel number is ten or eleven figures")
+      end
+      it 'tel_numberは12桁以上を入力しても購入できない' do
+        @purchase_address.tel_number = 123456789012
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("Tel number is ten or eleven figures")
+      end
+      it 'tel_numberに半角数字以外が入力されても購入できない' do
+        @purchase_address.tel_number = '１２３４５６７８９０'
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("Tel number is ten or eleven figures")
       end
       it 'tokenが入力されていない場合購入できない' do
         @purchase_address.token = nil

@@ -63,7 +63,6 @@ class ItemsController < ApplicationController
   end
 
   def sold_out
-    detail
     @purchase = Purchase.all
     if @purchase.where(item_id: @item.id).exists?
       redirect_to root_path
