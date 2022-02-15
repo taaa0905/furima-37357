@@ -22,16 +22,13 @@
         <%= @item.shipping_charge[:name] %>
       </span>
     </div>
-    <% if user_signed_in? && current_user.id == @item.user_id %>
-      <% unless @purchase.where(item_id: @item.id).exists? %>
+    <% if user_signed_in? && current_user.id == @item.user_id && @purchase.where(item_id: @item.id).empty? %>
         <%= link_to "商品の編集", edit_item_path, method: :get, class: "item-red-btn" %>
         <p class="or-text">or</p>
         <%= link_to "削除", item_path, method: :delete, class:"item-destroy" %>
-      <% end %>
-    <% else %>
-      <% unless @purchase.where(item_id: @item.id).exists? %>
+    <% end %>
+    <% if user_signed_in? && current_user.id != @item.user_id && @purchase.where(item_id: @item.id).empty? %>
         <%= link_to "購入画面に進む", item_purchases_path(@item.id) ,class:"item-red-btn" %>
-      <% end %>
     <% end %>
     <div class="item-explain-box">
       <span><%= @item.explanation %></span>

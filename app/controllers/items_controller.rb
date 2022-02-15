@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  before_action :detail, only: [:update, :show]
+  before_action :detail, only: [:update, :show, :edit]
   before_action :sold_out, only: [:edit]
   def index
     @items = Item.order('created_at DESC')
@@ -27,8 +27,7 @@ class ItemsController < ApplicationController
 
   def edit
     @purchase = Purchase.all
-    if current_user.id == detail.user_id
-      detail
+    if current_user.id == @item.user_id
     else
       redirect_to action: :index
     end
