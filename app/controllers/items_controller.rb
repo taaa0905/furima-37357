@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :detail, only: [:update, :show]
+  before_action :sold_out, only: [:edit]
   def index
     @items = Item.order('created_at DESC')
     @purchase = Purchase.all
@@ -25,6 +26,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @purchase = Purchase.all
     if current_user.id == detail.user_id
       detail
     else
@@ -58,5 +60,13 @@ class ItemsController < ApplicationController
 
   def detail
     @item = Item.find(params[:id])
+  end
+
+  def sold_out
+    detail
+    @purchase = Purchase.all
+    if @purchase.where(item_id: @item.id).exists?
+      redirect_to root_path
+    end
   end
 end
