@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   before_action :detail, only: [:update, :show]
   def index
     @items = Item.order('created_at DESC')
+    @purchase = Purchase.all
   end
 
   def new
@@ -20,6 +21,7 @@ class ItemsController < ApplicationController
 
   def show
     @user = @item.user
+    @purchase = Purchase.all
   end
 
   def edit
