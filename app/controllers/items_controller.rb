@@ -23,6 +23,7 @@ class ItemsController < ApplicationController
   def show
     @user = @item.user
     @purchase = Purchase.all
+    @comment = Comment.new
   end
 
   def edit

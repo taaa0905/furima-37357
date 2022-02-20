@@ -6,7 +6,8 @@ class User < ApplicationRecord
 
   has_many :items
   has_many :purchases
-  # has_many :comments
+  has_many :comments
+  
   with_options presence: true do
     VALID_NAME_REGEX = /\A[ぁ-んァ-ヶ一-龥々ー]+\z/.freeze
     VALID_FURIGANA_REGEX = /\A[\p{katakana} ー-&&[^ -~.-˚]]+\z/.freeze
