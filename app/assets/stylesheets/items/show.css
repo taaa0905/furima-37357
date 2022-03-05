@@ -205,3 +205,11 @@
   font-weight: bold;
   font-size: 23px;
 }
+.comment-content{
+  background-color: white;
+  width: 40vw;
+  height: 100px;
+  padding: 10px;
+  border: solid 2px #dedede;
+  resize: none;
+}
