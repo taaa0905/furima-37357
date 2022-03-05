@@ -24,6 +24,7 @@ class ItemsController < ApplicationController
     @user = @item.user
     @purchase = Purchase.all
     @comment = Comment.new
+    @comments = @item.comments.includes(:user)
   end
 
   def edit

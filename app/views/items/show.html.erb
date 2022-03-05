@@ -87,6 +87,15 @@
       <% end %>
     </div>
   <% end %>
+  <ul class="comment-list">
+    <% @comments.each do |comment| %>
+      <li class="comment-list">
+        <div class="comment-nickname"><%= comment.user.nickname %></div>
+        <div class="comment-content"><%= comment.content %></div>
+        <div class="comment-date"><%= l comment.created_at%></div>
+      </li>
+    <% end %>
+  </ul>
   <div class="links">
     <a href="#" class="change-item-btn">
       ＜ 前の商品
