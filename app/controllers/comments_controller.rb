@@ -7,10 +7,17 @@ class CommentsController < ApplicationController
       redirect_to item_path(@item[:id])
     end
   end
-end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    if user_signed_in? && current_user.id == item.user_id
+      @comment.destroy
+    end
+  end
 
 private
 
-def comment_params
-  params.require(:comment).permit(:content).merge(user_id: current_user.id,item_id: params[:item_id])
+  def comment_params
+    params.require(:comment).permit(:content).merge(user_id: current_user.id,item_id: params[:item_id])
+  end
 end
