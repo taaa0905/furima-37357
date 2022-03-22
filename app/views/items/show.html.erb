@@ -87,9 +87,9 @@
       <% end %>
     </div>
   <% end %>
-  <ul class="comment-list">
+  <ul class="comment-list" id="comment">
     <% @comments.each do |comment| %>
-      <li class="comment-list">
+      <li class="comment-list" id="comment">
         <div class="comment-nickname"><%= comment.user.nickname %></div>
         <div class="comment-date"><%= l comment.created_at %></div>
         <div class="comment-content"><%= comment.content %></div>
