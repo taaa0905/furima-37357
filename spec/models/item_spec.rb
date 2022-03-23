@@ -26,27 +26,27 @@ RSpec.describe Item, type: :model do
       it 'category_idの1を選択されている場合出品できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category can't be blank")
+        expect(@item.errors.full_messages).to include("Category を入力してください")
       end
       it 'condition_idの1を選択されている場合出品できない' do
         @item.condition_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Condition can't be blank")
+        expect(@item.errors.full_messages).to include("Condition を入力してください")
       end
       it 'shipping_charge_idの1を選択されている場合出品できない' do
         @item.shipping_charge_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping charge can't be blank")
+        expect(@item.errors.full_messages).to include("Shipping charge を入力してください")
       end
       it 'prefeture_idの1を選択されている場合出品できない' do
         @item.prefecture_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@item.errors.full_messages).to include("Prefecture を入力してください")
       end
       it 'packaging_day_idの1を選択されている場合出品できない' do
         @item.packaging_day_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Packaging day can't be blank")
+        expect(@item.errors.full_messages).to include("Packaging day を入力してください")
       end
       it 'priceが入力されていなければ出品できない' do
         @item.price = ''

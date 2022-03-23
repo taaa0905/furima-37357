@@ -7,3 +7,17 @@ ja:
     - :year
     - :month
     - :day
+  activerecord:
+    models:
+      item: 商品
+    attributes:
+      item:
+        product_name: 商品名
+        explanation: 説明
+        category_id: カテゴリ
+        condition_id: 状態
+        shipping_charge_id: 送料
+        prefecture_id: 都道府県
+        packaging_day_id: 発送期間
+        price: 価格
+        image: 画像
