@@ -1,5 +1,25 @@
 ja:
   activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: アドレスが入力されていません
+            password:
+              blank: が入力されていません
+            first_name:
+              blank: が入力されていません
+            last_name:
+              blank: が入力されていません
+            f_first_name:
+              blank: が入力されていません
+            f_last_name:
+              blank: が入力されていません
+            nickname:
+              blank: が入力されていません
+            dob:
+              blank: が入力されていません
     attributes:
       user:
         confirmation_sent_at: パスワード確認送信時刻
@@ -9,7 +29,7 @@ ja:
         current_password: 現在のパスワード
         current_sign_in_at: 現在のログイン時刻
         current_sign_in_ip: 現在のログインIPアドレス
-        email: Eメール
+        email: メール
         encrypted_password: 暗号化パスワード
         failed_attempts: 失敗したログイン試行回数
         last_sign_in_at: 最終ログイン時刻
@@ -31,7 +51,6 @@ ja:
         f_last_name: 名(フリガナ)
         nickname: ニックネーム
         dob: 生年月日
-        
     models:
       user: ユーザー
   devise:
